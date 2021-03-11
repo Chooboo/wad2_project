@@ -129,7 +129,7 @@ STATIC_DIR = STATIC_ROOT
 
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = [STATIC_DIR, ]
+STATICFILES_DIRS = []
 
 # Media files (User profile images, uploads, dynamic stuff)
 
