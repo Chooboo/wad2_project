@@ -25,7 +25,8 @@ SECRET_KEY = '%3+m*mil!t^7l((w@+q@(xk-g66(6*+@gqma(1uf_t+p!5hc&^'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['chooboo.eu.pythonanywhere.com',
+                 '127.0.0.1']
 
 
 # Application definition
