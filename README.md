@@ -15,20 +15,27 @@ git pull - ALWAYS before you start working
 
 When you start working - create a branch and name it after the feature you're working on.
 For example:
+
 git checkout -b handle_registration
+
 git checkout -b add_quiz
+
 git checkout -b ...
 
 This will create a new branch AND switch you to it.
+
 Try typing git branch to see whether you are on your branch or on main.
 
 You should be now use the usual commands:
+
 git add *
+
 git commit -m "added a new feature"
 
 Don't use git push unless you have everything working on your side please.
 
 After you're done implementing the feature, use the command:
+
 git push
 
 Now go to https://github.com/Chooboo/wad2_project. 
