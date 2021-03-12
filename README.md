@@ -1,9 +1,7 @@
-# wad2_project
-
-You can see what packages you need to install into your virtualenv in requirements.txt file.
-
 # How to set up the project:
 Create a virtual environment first
+
+You can see what packages you need to install into your virtualenv in requirements.txt file.
 
 Download the repo: git clone https://github.com/Chooboo/wad2_project.git
 
