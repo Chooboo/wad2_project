@@ -5,4 +5,4 @@ You can see what packages you need to install into your virtualenv in requiremen
 
 Git guide:
 
-git pull ALWAYS before you start working
+git pull - ALWAYS before you start working
