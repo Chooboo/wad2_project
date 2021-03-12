@@ -16,6 +16,7 @@ source: https://medium.com/@jonathanmines/the-ultimate-github-collaboration-guid
 
 git pull - ALWAYS before you start working
 
+
 When you start working - create a branch and name it after the feature you're working on.
 For example:
 
@@ -29,6 +30,7 @@ This will create a new branch AND switch you to it.
 
 Try typing git branch to see whether you are on your branch or on main.
 
+
 You should be now use the usual commands:
 
 git add *
@@ -36,6 +38,7 @@ git add *
 git commit -m "added a new feature"
 
 Don't use git push unless you have everything working on your side please.
+
 
 After you're done implementing the feature, use the command:
 
