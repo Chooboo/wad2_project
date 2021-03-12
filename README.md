@@ -14,15 +14,18 @@ Now you have git initialized in the folder you downloaded so you can just naviga
 # Git guide on how to collab:
 source: https://medium.com/@jonathanmines/the-ultimate-github-collaboration-guide-df816e98fb67
 
-git pull - ALWAYS before you start working
+### Before you start coding:
+
+git pull - makes sure you have the up-to-date code on your computer
 
 
-When you start working - create a branch and name it after the feature you're working on.
-For example:
+### During coding:
+
+First create your own branch so that when you accidentally mess up it won't propagate to the main branch and affect everyone:
+
+#### Examples:
 
 git checkout -b handle_registration
-
-git checkout -b add_quiz
 
 git checkout -b ...
 
@@ -40,7 +43,7 @@ git commit -m "added a new feature"
 Don't use git push unless you have everything working on your side please.
 
 
-### After you're done implementing the feature and everything's working, use the command:
+### After you finish coding and everything's working:
 
 git push
 
