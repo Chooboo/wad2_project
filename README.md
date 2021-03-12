@@ -14,12 +14,14 @@ Now you have git initialized in the folder you downloaded so you can just naviga
 # Git guide on how to collab:
 source: https://medium.com/@jonathanmines/the-ultimate-github-collaboration-guide-df816e98fb67
 
-### Before you start coding:
+## Before you start coding:
 
 git pull - makes sure you have the up-to-date code on your computer
 
 
-### During coding:
+## During coding:
+
+### Branching
 
 First create your own branch so that when you accidentally mess up it won't propagate to the main branch and affect everyone:
 
@@ -33,6 +35,7 @@ This will create a new branch AND switch you to it.
 
 Try typing git branch to see whether you are on your branch or on main.
 
+### Commiting:
 
 You should be now use the usual commands:
 
@@ -43,7 +46,7 @@ git commit -m "added a new feature"
 Don't use git push unless you have everything working on your side please.
 
 
-### After you finish coding and everything's working:
+## After you finish coding and everything's working:
 
 git push
 
