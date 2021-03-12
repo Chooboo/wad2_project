@@ -40,7 +40,7 @@ git commit -m "added a new feature"
 Don't use git push unless you have everything working on your side please.
 
 
-After you're done implementing the feature, use the command:
+### After you're done implementing the feature and everything's working, use the command:
 
 git push
 
