@@ -4,7 +4,9 @@ You can see what packages you need to install into your virtualenv in requiremen
 
 # How to set up the project:
 Create a virtual environment first
+
 Download the repo: git clone https://github.com/Chooboo/wad2_project.git
+
 Now you have git initialized in the folder you downloaded so you can just navigate into it and use all the git commands as usual.
 
 
