@@ -2,13 +2,14 @@
 
 You can see what packages you need to install into your virtualenv in requirements.txt file.
 
-Guide on how to set up the project:
+# How to set up the project:
 Create a virtual environment first
 Download the repo: git clone https://github.com/Chooboo/wad2_project.git
 Now you have git initialized in the folder you downloaded so you can just navigate into it and use all the git commands as usual.
 
 
-Git guide on how to collab:
+
+# Git guide on how to collab:
 source: https://medium.com/@jonathanmines/the-ultimate-github-collaboration-guide-df816e98fb67
 
 git pull - ALWAYS before you start working
