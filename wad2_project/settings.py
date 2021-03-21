@@ -28,6 +28,10 @@ DEBUG = True
 ALLOWED_HOSTS = ['chooboo.eu.pythonanywhere.com',
                  '127.0.0.1']
 
+REGISTRATION_OPEN = True
+REGISTRATION_AUTO_LOGIN = True
+LOGIN_REDIRECT_URL = 'musicquiz:index'
+LOGIN_URL = 'auth_login'
 
 # Application definition
 
@@ -38,7 +42,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'musicquiz'
+    'musicquiz',
+    'registration',
+    'crispy_forms'
 ]
 
 MIDDLEWARE = [
@@ -138,3 +144,7 @@ MEDIA_DIR = os.path.join(BASE_DIR, 'media')
 MEDIA_ROOT = MEDIA_DIR
 
 MEDIA_URL = '/media/'
+
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+

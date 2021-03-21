@@ -2,11 +2,14 @@
 {% load static %}
 
 {% block title %}
-    Welcome
+    Home
 {% endblock %}
 
 {% block body %}
-    <h1>This is the index page</h1>
-    <p>It currently looks like shit</p>
-    <img src="{% static 'images/zoom.png' %}" alt="Noooooooooooo" />
+    <h1>This is the home page</h1>
+    <p>It currently looks BRiLliAnT (:</p>
+	<h2>Is you're music taste out of this world..?</h2>
+	<a href="{% url 'musicquiz:error' %}">No</a>
+	<a href="{% url 'musicquiz:quiz' %}">Yes</a>
+
 {% endblock %}

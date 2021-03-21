@@ -1,0 +1,16 @@
+{% extends 'musicquiz/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title_block %}
+	Register
+{% endblock %}
+
+{% block body %}
+<h1>Register Here</h1>
+
+<form method="post" action=".">
+	{% csrf_token %}
+	{{ form|crispy }}
+	<input type="submit" value="Register" />
+</form>
+{% endblock %}
