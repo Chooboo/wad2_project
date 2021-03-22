@@ -6,10 +6,11 @@
 {% endblock %}
 
 {% block body %}
-    <h1>This is the home page</h1>
-    <p>It currently looks BRiLliAnT (:</p>
-	<h2>Is you're music taste out of this world..?</h2>
-	<a href="{% url 'musicquiz:error' %}">No</a>
-	<a href="{% url 'musicquiz:quiz' %}">Yes</a>
-
+    <section class="full-page">
+        <div class="container home-page-content">
+            <h2>Is your music taste out of this world...?</h2>
+            <a href="{% url 'musicquiz:error' %}">No</a>
+            <a href="{% url 'musicquiz:quiz' %}">Yes</a>
+        </div>
+    </section>
 {% endblock %}
