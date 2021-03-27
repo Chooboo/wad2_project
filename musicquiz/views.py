@@ -5,6 +5,8 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.contrib.auth.models import User
+from musicquiz.models import UserProfile
 
 
 def index(request):
@@ -26,7 +28,7 @@ def quiz(request):
     context_dict = {}
     return render(request, 'musicquiz/quiz.html', context=context_dict)
 
-           
+
 def register(request):
     registered = False
 
@@ -38,7 +40,7 @@ def register(request):
             user = user_form.save()
             user.set_password(user.password)
             user.save()
-            
+
             profile = profile_form.save(commit=False)
             profile.user = user
 
@@ -84,15 +86,57 @@ def user_login(request):
 
     return render(request, 'musicquiz/login.html', {'error': error})
 
+
 @login_required
 def user_logout(request):
     logout(request)
-    return HttpResponseRedirect(reverse('index'))
-    
+    return HttpResponseRedirect(reverse('logout'))
+
+
 @login_required
-def my_account(request):
-    context_dict = {}
-    return render(request, 'musicquiz/my_account.html', context=context_dict)
+def register_profile(request):
+    form = UserProfileForm()
+    if request.method == 'POST':
+        form = UserProfileForm(request.POST, request.FILES)
+        if form.is_valid():
+            user_profile = form.save(commit=False)
+            user_profile.user = request.user
+            user_profile.save()
+            return redirect('musicquiz:index')
+        else:
+            print(form.errors)
+    context_dict = {'form': form}
+    return render(request,
+                  'musicquiz/profile_registration.html',
+                  context_dict)
+
+
+@login_required
+def profile(request, username):
+    try:
+        user = User.objects.get(username=username)
+    except User.DoesNotExist:
+        return redirect('index')
+
+    userprofile = UserProfile.objects.get_or_create(user=user)[0]
+    form = UserProfileForm({
+        'picture': userprofile.picture
+    })
+
+    if request.method == 'POST':
+        form = UserProfileForm(request.POST, request.FILES, instance=userprofile)
+
+        if form.is_valid():
+            form.save(commit=True)
+
+            return redirect('musicquiz:profile', user.username)
+
+        else:
+
+            print(form.errors)
+
+    return render(request, 'musicquiz/profile.html',
+                  {'userprofile': userprofile, 'selecteduser': user, 'form': form})
 
 
 def error(request):
