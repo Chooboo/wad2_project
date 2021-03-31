@@ -106,9 +106,7 @@ def register_profile(request):
         else:
             print(form.errors)
     context_dict = {'form': form}
-    return render(request,
-                  'musicquiz/profile_registration.html',
-                  context_dict)
+    return render(request, 'musicquiz/profile_registration.html', context_dict)
 
 
 @login_required
@@ -128,15 +126,12 @@ def profile(request, username):
 
         if form.is_valid():
             form.save(commit=True)
-
             return redirect('musicquiz:profile', user.username)
 
         else:
-
             print(form.errors)
 
-    return render(request, 'musicquiz/profile.html',
-                  {'userprofile': userprofile, 'selecteduser': user, 'form': form})
+    return render(request, 'musicquiz/profile.html', {'userprofile': userprofile, 'selecteduser': user, 'form': form})
 
 
 def error(request):

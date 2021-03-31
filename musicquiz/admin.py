@@ -1,5 +1,4 @@
 from django.contrib import admin
-from musicquiz.models import UserProfile, QuizPage
+from musicquiz.models import UserProfile
 
 admin.site.register(UserProfile)
-admin.site.register(QuizPage)

@@ -1,26 +1,29 @@
 {% extends 'musicquiz/base.html' %}
-
 {% load static %}
-{% block title %}{{ selecteduser.username }} Profile{% endblock %}
-{% block body %}
 
+{% block title %}
+    {{ selecteduser.username }} Profile
+{% endblock %}
+
+{% block body %}
 <style>
-img {
-	height: 250px;
-	width: 250px;
-	border-radius: 50%;
-	background-position: center center;
-	background-size: cover;
-	border: 5px solid #555;
-}
+    img {
+        height: 250px;
+        width: 250px;
+        border-radius: 50%;
+        background-position: center center;
+        background-size: cover;
+        border: 5px solid #555;
+    }
 </style>
-	
 <h1>{{ selecteduser.username }}'s Profile</h1>
+
 {% if userprofile.picture %}
-    <img src="{{ MEDIA_URL }}{{ userprofile.picture }}"/>
+    <img id="profile-picture" src="{{ MEDIA_URL }}{{ userprofile.picture }}"/>
 {%  else %}
-    <img src="{{ MEDIA_URL }}default_profile_pic.png" alt="No Image" />
+    <img id="profile-picture" src="{{ MEDIA_URL }}default_profile_pic.png" alt="No Image" />
 {% endif %}
+
 <hr>
 <div>
     {% if selecteduser.username == user.username %}
