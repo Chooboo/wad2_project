@@ -1,23 +1,45 @@
 import os
-os.environ.setdefault('DJANGO_SETTINGS_MODULE',
-                      'wad2_project.settings.')
 
+os.environ.setdefault('DJANGO_SETTINGS_MODULE',
+                      'wad2_project.settings')
 import django
 django.setup()
 
-from musicquiz.models import QuizPage
+from musicquiz.models import MusicCategory
 
-def add_data(data1, data2):
-    dt, created = QuizPage.objects.get_or_create(data1=data1, data2=data2)
-    print("- Data:{0}, Created: {1}".format(str(dt), str(created)))
-    return dt
+
+def add_category(title, description, image_name):
+    cat = MusicCategory.objects.get_or_create(title=title)[0]
+    cat.description = description
+    cat.image_name = "/category_images/" + image_name
+    cat.save()
+    return cat
+
+
+def add_comment():
+    pass
 
 
 def populate():
-    for row in data:
-        data1 = row[0]
-        data2 = row[1]
-        add_data(data1, data2)
+    categories = {
+        'Innocent Baby': {
+                 'description': '',
+                 'image_name': 'baby.jpg'},
+        'The Awakening': {
+                 'description': '',
+                 'image_name': 'awakening.jpg'},
+        'The Child': {
+                 'description': '',
+                 'image_name': 'child.jpg'},
+        'The Faded Adult': {
+                 'description': '',
+                 'image_name': 'adult.jpg'},
+        'Transcendence': {
+                 'description': '',
+                 'image_name': 'transcendence.jpg'},
+    }
+    for category, data in categories.items():
+        cat = add_category(category, data['description'], data['image_name'])
 
 
 if __name__ == "__main__":

@@ -6,7 +6,7 @@ from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.auth.models import User
-from musicquiz.models import UserProfile
+from musicquiz.models import UserProfile, MusicCategory
 
 
 def index(request):
@@ -20,7 +20,7 @@ def about(request):
 
 
 def categories(request):
-    context_dict = {}
+    context_dict = {'categories': MusicCategory.objects.all()}
     return render(request, 'musicquiz/categories.html', context=context_dict)
 
 
