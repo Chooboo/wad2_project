@@ -7,10 +7,12 @@
 
 {% block body %}
     <section class="full-page">
-        <div class="container home-page-content">
-            <h2>Is your music taste out of this world...?</h2>
-            <a href="{% url 'musicquiz:error' %}">No</a>
-            <a href="{% url 'musicquiz:quiz' %}">Yes</a>
+        <div id="particles-js">
+            <div class="container home-page-content">
+                <h2>Is your music taste out of this world...?</h2>
+                <a href="{% url 'musicquiz:error' %}">No</a>
+                <a href="{% url 'musicquiz:quiz' %}">Yes</a>
+            </div>
         </div>
     </section>
 {% endblock %}

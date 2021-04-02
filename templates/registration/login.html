@@ -1,24 +1,27 @@
 {% extends 'musicquiz/base.html' %}
 {% load static %}
-
+{% load crispy_forms_tags %}
 {% block title_block %}
 	Login
 {% endblock %}
 
 {% block body %}
-<h1>Login</h1>
+    <div class="container-md mt-5">
 
-<form method="post" action=".">
-	{% csrf_token %}
+        <h1>Login</h1>
 
-	{{ form.as_p }}
+        <form method="post" action=".">
+            {% csrf_token %}
 
-	<input type="submit" value="Log In" />
-	<input type="hidden" name="next" value="{{ next }}" />
-</form>
+            {{ form|crispy }}
 
-<p>
-	Not registered?
-	<a href="{% url 'registration_register' %}">Register here!</a>
-</p>
+            <input type="submit" value="Log In" />
+            <input type="hidden" name="next" value="{{ next }}" />
+        </form>
+
+        <p>
+            Not registered?
+            <a href="{% url 'registration_register' %}">Register here!</a>
+        </p>
+    </div>
 {% endblock %}

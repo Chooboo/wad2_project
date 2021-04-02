@@ -2,7 +2,6 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.template.defaultfilters import slugify
 from django.utils import timezone
-import os
 
 
 class UserProfile(models.Model):
@@ -32,7 +31,10 @@ class MusicCategory(models.Model):
 
 
 class Comment(models.Model):
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    category = models.ForeignKey(MusicCategory,
+                                 on_delete=models.CASCADE,
+                                 default=1)
+    author = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
     body = models.CharField(max_length=300, blank=False)
     date_added = models.DateTimeField(default=timezone.now)
     likes = models.IntegerField(default=0)

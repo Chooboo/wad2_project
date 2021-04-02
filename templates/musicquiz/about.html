@@ -6,13 +6,54 @@
 {% endblock %}
 
 {% block body %}
+<style>
+    img {
+        height: 250px;
+        width: 250px;
+        border-radius: 50%;
+        background-position: center center;
+        background-size: cover;
+        border: 5px solid #555;
+    }
+    hr.rounded {
+  		border-top: 8px solid #bbb;
+  		border-radius: 5px;
+  		border-color:#000000;
+	}
+</style>
 	<section class="full-page">
 		<div class="container pt-5">
-			<h1>This is the about page</h1>
-			<p>blablabla about digital planet</p>
-			<p>Please feel free to contact us at any time with your concerns and we will be sure to get back to you as soon as we can!</p>
-			<p>email: noonecares@lol.com</p>
-			<p>phone: 123456789 </p>
+			<h1 class="text-center">About us</h1>
+			<br/>
+			<hr class="rounded">
+
+			<p>Here at Digital Planet, we are passionate about connecting users across the globe and allowing them to communicate about
+				music. We feel it is important to be able to share and discuss music with everyone, no matter how far away they might be.
+				Using cutting edge technology, we have developed a state of the art quiz which will accurately define our users music taste
+				into one of five categories. Our users are then able to communicate via the forms for each category!
+			</p>
+			<hr class="rounded">
+			<br/>
+			<h2 class="text-center">Meet the developers!</h2>
+			<br/>
+			<img id="creator-images" src="{{ MEDIA_URL }}goose.jpg" />
+			<img id="creator-images" src="{{ MEDIA_URL }}zebra.jpg" />
+			<img id="creator-images" src="{{ MEDIA_URL }}vibecat.jpg" />
+
+			<br/>
+			<br/>
+			<hr class="rounded">
+			<br/>
+
+			<h2 class="text-center">Want to contact us?</h2>
+			<p>Please feel free to email us at any time with your concerns and we will be sure to get back to you as soon as we can!</p>
+			<p>email: fakeemail@lol.com</p>
+			<br/>
+			<hr class="rounded">
+			<br/>
+			<br/>
+			<br/>
+			<br/>
 		</div>
 	</section>
-{% endblock %}
+{% endblock %}}
