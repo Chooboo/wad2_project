@@ -24,6 +24,17 @@ def categories(request):
     return render(request, 'musicquiz/categories.html', context=context_dict)
 
 
+def category(request, category_slug):
+    context_dict = {}
+    try:
+        category = MusicCategory.objects.get(slug=category_slug)
+        context_dict['category'] = category
+
+    except MusicCategory.DoesNotExist:
+        context_dict['category'] = None
+    return render(request, 'musicquiz/category.html', context=context_dict)
+
+
 def quiz(request):
     context_dict = {}
     return render(request, 'musicquiz/quiz.html', context=context_dict)

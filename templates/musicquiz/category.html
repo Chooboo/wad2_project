@@ -1,0 +1,12 @@
+{% extends 'musicquiz/base.html' %}
+{% load static %}
+
+{% block title %}
+    {{ category.title }}
+{% endblock %}
+
+{% block body %}
+    <h2 class="text-center">{{ category.title }}</h2>
+    <img class="cat-img rounded mx-auto d-block" src="{{ MEDIA_URL }}{{ category.image_name }}" alt="{{ category.title }}"/>
+    <p>{{ category.description }}</p>
+{% endblock %}

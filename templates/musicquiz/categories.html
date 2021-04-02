@@ -6,10 +6,26 @@
 {% endblock %}
 
 {% block body %}
-    <h1>This is the music enlightenment categories page</h1>
+    <style>
+        .cat-img {
+            max-height: 150px;
+        }
+    </style>
+    <h2 class="text-center">Where do you belong?</h2>
+    <br>
     {% for category in categories %}
-        <p>{{ category.title }}</p>
-        <img src="{{ MEDIA_URL }}{{ category.image_name }}" />
+        {% if forloop.counter == 1 or forloop.counter == 4 %}
+            <div class="row">
+        {% endif %}
+        <div class="col-md">
+            <a href="{% url 'musicquiz:category' category.slug %}">
+                <img class="cat-img rounded mx-auto d-block" src="{{ MEDIA_URL }}{{ category.image_name }}" alt="{{ category.title }}"/>
+            </a>
+            <p class="cat-title text-center">{{ category.title }}</p>
+        </div>
+        {% if forloop.counter == 3 or forloop.counter == 5 %}
+            </div>
+        {% endif %}
 
     {% endfor %}
 {% endblock %}
