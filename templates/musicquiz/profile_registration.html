@@ -5,11 +5,13 @@
 {% endblock %}
 
 {% block body %}
-    <h1>Registration - Step 2</h1>
-    <form method="post" action="{% url 'musicquiz:register_profile' %}" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="Submit"/>
-    </form>
+    <div class="container-md main-content">
+        <h1>Registration - Step 2</h1>
+        <form method="post" action="{% url 'musicquiz:register_profile' %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Submit"/>
+        </form>
+    </div>
 {% endblock %}
 

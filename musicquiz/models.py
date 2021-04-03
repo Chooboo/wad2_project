@@ -33,8 +33,8 @@ class MusicCategory(models.Model):
 class Comment(models.Model):
     category = models.ForeignKey(MusicCategory,
                                  on_delete=models.CASCADE,
-                                 default=1)
-    author = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
+                                 blank=False)
+    author = models.ForeignKey(UserProfile, blank=False, on_delete=models.CASCADE)
     body = models.CharField(max_length=300, blank=False)
     date_added = models.DateTimeField(default=timezone.now)
     likes = models.IntegerField(default=0)

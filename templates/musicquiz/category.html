@@ -6,37 +6,52 @@
 {% endblock %}
 
 {% block body %}
-    <div class="container-md mt-5">
-        <div class="card px-3 py-5">
-            <!-- Info section -->
-            <h2 class="text-center">{{ category.title }}</h2>
-            <img class="img-fluid rounded mx-auto d-block" src="{{ MEDIA_URL }}{{ category.image_name }}" alt="{{ category.title }}"/>
-            <h4 class="text-justify mt-4 mx-5">{{ category.description }}</h4>
+    <div class="container main-content">
+        <!-- Info section -->
+        <h2 class="text-center">{{ category.title }}</h2>
+        <img class="img-fluid rounded mx-auto d-block" src="{{ MEDIA_URL }}{{ category.image_name }}" alt="{{ category.title }}"/>
+        <h4 class="text-justify mt-4">{{ category.description }}</h4>
 
-            <!-- Comment section -->
-            <div class="container-md mt-5 mx-auto p-3" style="background-color: darkblue">
-                <h4 class="text-left">A wee section of hate:</h4>
+        <!-- Comment section -->
+        <div class="container-md mt-5 mx-auto p-3" style="background-color:darkgray">
 
-                <div class="container w-75">
-                    {% for comment in comments %}
-                        {{ comment.author }} says: <br/>
-                        {{ comment.body }}
+            <h4 class="text-center">A wee section of hate:</h4>
 
-                    {% empty %}
-                        <p class="text-center">Nobody feels offended yet.<br />
-                            Lead by example by hating on us first!</p>
-                    {% endfor %}
-                </div>
-
-                <!-- Add comment section -->
-                <form class="w-75 mx-auto">
-                    <div class="form-group">
-                        <label for="comment">Comment:</label>
-                        <textarea class="form-control" rows="3" id="comment"></textarea>
+            <div class="container">
+                {% for comment in comments %}
+                    <div class="card mx-auto w-75 mb-3 p-3" style="color:black">
+                        <div class="row">
+                            <div class="col-1">
+                                <img src="{{ MEDIA_URL }}{{ comment.author.picture }}"
+                                     class="img-fluid"
+                                     style="min-width:50px; min-height:50px; border-radius: 10px"
+                                     alt="avatar_thumbnail"/>
+                            </div>
+                            <div class="col-auto">
+                                <strong>{{ comment.author }}</strong>
+                                <p>{{ comment.body }}</p>
+                            </div>
+                        </div>
+                        <span>
+                            {{ comment.date_added }}
+                            <span class="float-right">{{ comment.likes }}</span>
+                        </span>
                     </div>
-                    <button class="float-right" type="submit">Submit</button>
-                </form>
+
+                {% empty %}
+                    <p class="text-center">Nobody feels offended yet.<br />
+                        Lead by example by hating on us first!</p>
+                {% endfor %}
             </div>
+
+            <!-- Add comment section -->
+            <form class="w-75 mx-auto">
+                <div class="form-group">
+                    <label for="comment">Comment:</label>
+                    <textarea class="form-control" rows="3" id="comment"></textarea>
+                </div>
+                <button class="float-right" type="submit">Submit</button>
+            </form>
         </div>
     </div>
 {% endblock %}

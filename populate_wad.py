@@ -26,9 +26,7 @@ def create_mock_user():
 
 
 def add_comment(category, author, body, likes):
-    comment = Comment.objects.get_or_create()[0]
-    comment.category = category
-    comment.author = author
+    comment = Comment.objects.create(category=category, author=author)
     comment.body = body
     comment.likes = likes
     comment.save()
@@ -80,7 +78,8 @@ def populate():
         if data.get('comments') is not None:
             for comment in data['comments']:
                 print(comment['body'][:10])
-                add_comment(cat, userprofile, comment['body'], comment['likes'])
+                c = add_comment(cat, userprofile, comment['body'], comment['likes'])
+                print(c.id)
 
 
 if __name__ == "__main__":

@@ -21,8 +21,7 @@
   		border-color:#000000;
 	}
 </style>
-	<section class="full-page">
-		<div class="container pt-5">
+    <div class="container main-content">
 			<h1 class="text-center">About us</h1>
 			<br/>
 			<hr class="rounded">
@@ -36,9 +35,17 @@
 			<br/>
 			<h2 class="text-center">Meet the developers!</h2>
 			<br/>
-			<img id="creator-images" src="{{ MEDIA_URL }}goose.jpg" />
-			<img id="creator-images" src="{{ MEDIA_URL }}zebra.jpg" />
-			<img id="creator-images" src="{{ MEDIA_URL }}vibecat.jpg" />
+            <div class="row">
+                <div class="col">
+                    <img id="creator-images" src="{{ MEDIA_URL }}goose.jpg" />
+                </div>
+                <div class="col">
+                    <img id="creator-images" src="{{ MEDIA_URL }}zebra.jpg" />
+                </div>
+                <div class="col">
+                    <img id="creator-images" src="{{ MEDIA_URL }}vibecat.jpg" />
+                </div>
+            </div>
 
 			<br/>
 			<br/>
@@ -51,9 +58,5 @@
 			<br/>
 			<hr class="rounded">
 			<br/>
-			<br/>
-			<br/>
-			<br/>
-		</div>
-	</section>
+    </div>
 {% endblock %}}

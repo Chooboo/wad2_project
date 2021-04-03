@@ -1,30 +1,74 @@
-html, body {
-    color: #00ff29;
+body {
     font-family: 'B612 Mono', monospace;
-    background: rgba(0,0,0,0.9);
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.5;
+    background: #383838;
+    color: #00ff29;
+    position: relative;
 }
 
-#particles-js{
+html, body {
+    width:100%;
+    height:100%;
+}
+
+canvas {
+    display:block;
+}
+
+.main-content {
     position: absolute;
-    height: 100%;
-    width: 100%;
+    top: 10%;
+    left: 0;
+    right: 0;
+    padding: 3rem;
+    background-color: #1d2124;
 }
 
-.full-page {
-    width: 100%;
-    height: 100%;
-}
-
-.home-page-content {
+.home-page {
     position: absolute;
     text-align: center;
     left: 0;
     right: 0;
     top: 45%;
-    transform: translateY(-50%);
+}
+
+.index-yes {
+    background-color: #00ff29;
+    color: black;
+    padding: 0.65rem;
+    border-radius: 0.50rem;
+    margin-right: 2rem;
+    cursor: pointer;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+.index-yes:hover {
+    text-decoration: none;
+    color:black;
+    background-color: #00c420;
+}
+
+.index-no {
+    background-color: red;
+    color: white;
+    padding: 0.65rem;
+    border-radius: 0.50rem;
+    cursor:pointer;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.index-no:hover {
+    text-decoration: none;
+    color: white;
+    background-color: #c10000;
+}
+
+#particles-js{
+    width: 100%;
+    height: 100%;
+}
+
+.full-page {
+    width: 100%;
+    height: 100%;
 }
 
 
