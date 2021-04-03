@@ -65,11 +65,6 @@ def populate():
                            "and spend all your time discovering semi-obscure bands that probably sound crap. "
                            "Wasn't music supposed to be fun though?",
             'image_name': 'adult.jpg'},
-
-        'Transcendence': {
-            'description': "You are God incarnate. All your friends desperately try to find an excuse to go "
-                           "away from you when you start talking about music.",
-            'image_name': 'transcendence.jpg'},
     }
 
     userprofile = create_mock_user()

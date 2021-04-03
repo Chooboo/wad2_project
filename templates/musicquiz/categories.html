@@ -8,24 +8,25 @@
 {% block body %}
     <style>
         .cat-img {
-            max-height: 150px;
+            max-height: 175px;
         }
     </style>
     <div class="container-md main-content">
         <h2 class="text-center">How enlightened are you?</h2>
         <br>
         {% for category in categories %}
-            {% if forloop.counter == 1 or forloop.counter == 4 %}
+            {% if forloop.counter == 1 or forloop.counter == 3 %}
                 <div class="row">
             {% endif %}
-        <div class="col-md">
-            <a href="{% url 'musicquiz:category' category.slug %}">
-                <img class="cat-img rounded mx-auto d-block" src="{{ MEDIA_URL }}{{ category.image_name }}" alt="{{ category.title }}"/>
-            </a>
-            <p class="cat-title text-center">{{ category.title }}</p>
-        </div>
 
-        {% if forloop.counter == 3 or forloop.counter == 5 %}
+            <div class="col-md">
+                <a href="{% url 'musicquiz:category' category.slug %}">
+                    <img class="cat-img rounded mx-auto d-block" src="{{ MEDIA_URL }}{{ category.image_name }}" alt="{{ category.title }}"/>
+                </a>
+                <p class="cat-title text-center">{{ category.title }}</p>
+            </div>
+
+        {% if forloop.counter == 2 or forloop.counter == 4 %}
             </div>
         {% endif %}
 
