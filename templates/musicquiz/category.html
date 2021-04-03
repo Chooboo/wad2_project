@@ -8,7 +8,10 @@
 {% block body %}
     <div class="container main-content">
         <!-- Info section -->
-        <h2 class="text-center">{{ category.title }}</h2>
+        <div class="heading-wrapper">
+            <h2 class="text-center">{{ category.title }}</h2>
+        </div>
+        <br />
         <img class="img-fluid rounded mx-auto d-block" src="{{ MEDIA_URL }}{{ category.image_name }}" alt="{{ category.title }}"/>
         <h4 class="text-justify mt-4">{{ category.description }}</h4>
 

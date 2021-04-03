@@ -20,11 +20,7 @@
 
     <h1>{{ selecteduser.username }}'s Profile</h1>
 
-    {% if userprofile.picture %}
-        <img id="profile-picture" src="{{ MEDIA_URL }}{{ userprofile.picture }}"/>
-    {%  else %}
-        <img id="profile-picture" src="{{ MEDIA_URL }}default_profile_pic.png" alt="No Image" />
-    {% endif %}
+    <img id="profile-picture" src="{{ MEDIA_URL }}default_profile_pic.png" alt="No Image" />
 
     <hr>
     <div>

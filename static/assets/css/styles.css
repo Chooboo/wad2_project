@@ -14,13 +14,27 @@ canvas {
     display:block;
 }
 
+.cat-img {
+    max-width: 90%;
+}
+
+.heading-wrapper {
+    background-color: #1b4000;
+    padding-top: 15px;
+    padding-bottom: 10px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
 .main-content {
     position: absolute;
-    top: 10%;
+    top: 15%;
     left: 0;
     right: 0;
     padding: 3rem;
     background-color: #1d2124;
+    margin-bottom: 5rem;
+    border-radius: 15px;
 }
 
 .home-page {
@@ -36,7 +50,7 @@ canvas {
     color: black;
     padding: 0.65rem;
     border-radius: 0.50rem;
-    margin-right: 2rem;
+    margin-right: 1rem;
     cursor: pointer;
     transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
@@ -51,9 +65,11 @@ canvas {
     color: white;
     padding: 0.65rem;
     border-radius: 0.50rem;
+    margin-left: 1rem;
     cursor:pointer;
     transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
+
 
 .index-no:hover {
     text-decoration: none;
