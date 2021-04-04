@@ -12,13 +12,17 @@
             <h2 class="text-center">{{ category.title }}</h2>
         </div>
         <br />
-        <img class="img-fluid rounded mx-auto d-block" src="{{ MEDIA_URL }}{{ category.image_name }}" alt="{{ category.title }}"/>
+        <img class="img-fluid rounded mx-auto d-block" src="{% static category.image_name %}" alt="{{ category.title }}"/>
         <h4 class="text-justify mt-4">{{ category.description }}</h4>
 
         <!-- Comment section -->
-        <div class="container-md mt-5 mx-auto p-3" style="background-color:darkgray">
-            <h4 class="text-center">A wee section of hate:</h4>
+        <div class="container-md mt-5 mx-auto p-3">
+            <!-- Comment section title -->
+            <div class="heading-wrapper">
+                <h4 class="text-center">A wee section of hate:</h4>
+            </div>
 
+            <!-- Rendered comments -->
             <div id="comments">
                 {% include "musicquiz/components/comments.html" %}
             </div>
@@ -28,7 +32,7 @@
                 <form id="add-comment"
                       data-categoryslug="{{ category.slug }}"
                       data-userid="{{ user.id }}"
-                      class="w-75 mx-auto">
+                      class="mx-auto">
                     {% csrf_token %}
                     <div class="form-group">
                         <label for="comment-body">Comment:</label>

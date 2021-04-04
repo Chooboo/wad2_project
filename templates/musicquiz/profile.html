@@ -18,7 +18,9 @@
 </style>
 <div class="container-md main-content">
 
-    <h1>{{ selecteduser.username }}'s Profile</h1>
+    <div class="heading-wrapper">
+        <h2 class="text-center">{{ selecteduser.username }}'s Profile</h2>
+    </div>
 
     <img id="profile-picture" src="{{ MEDIA_URL }}{{ userprofile.picture }}" alt="User avatar" />
 

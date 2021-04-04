@@ -13,7 +13,7 @@ from django.contrib.auth.models import User
 def add_category(title, description, image_name):
     cat = MusicCategory.objects.get_or_create(title=title)[0]
     cat.description = description
-    cat.image_name = "/category_images/" + image_name
+    cat.image_name = "/images/category_images/" + image_name
     cat.save()
     return cat
 

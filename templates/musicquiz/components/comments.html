@@ -1,17 +1,24 @@
 <div class="container">
     {% for comment in comments %}
-        <div class="card mx-auto w-75 mb-3 p-3" style="color:black">
+        <div class="card mx-auto mb-3 p-3" style="color:black">
             <div class="row">
+                <!-- User's picture -->
                 <div class="col-1">
-                    <img src="{{ MEDIA_URL }}{{ comment.author.picture }}"
-                         class="img-fluid"
-                         style="min-width:50px; min-height:50px; border-radius: 10px"
-                         alt="avatar_thumbnail"/>
+                    <a href="{% url 'musicquiz:profile' comment.author.user.username %}">
+                        <img src="{{ MEDIA_URL }}{{ comment.author.picture }}"
+                             class="img-fluid avatar-thumbnail"
+                             alt="avatar_thumbnail"/>
+                    </a>
                 </div>
+
+                <!-- User's name and their comment -->
                 <div class="col-10">
-                    <strong>{{ comment.author }}</strong>
+                    <a href="{% url 'musicquiz:profile' comment.author.user.username %}" class="comment-username">
+                        {{ comment.author }}
+                    </a>
                     <p>{{ comment.body }}</p>
                 </div>
+
                 <!-- Remove review button -->
                 {% if user.id == comment.author.id %}
                     <div class="col-1">
@@ -23,10 +30,12 @@
                     </div>
                 {% endif %}
             </div>
-            <span>
+            <p>
                 {{ comment.date_added }}
-                <span class="float-right">{{ comment.likes }}</span>
-            </span>
+                <span class="float-right">{{ comment.likes }} likes</span>
+                <button class="btn btn-primary btn-sm">
+                    <i class="fa fa-thumbs-up"></i> Like
+                </button>
         </div>
 
     {% empty %}

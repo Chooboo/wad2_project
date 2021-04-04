@@ -12,7 +12,7 @@ $(document).ready(function(){
         $.post('/category/' + categorySlug + '/',
             {'user-id' : userId,
             'body': commentBody,
-            'csrfmiddlewaretoken': csrfToken},
+            'csrfmiddlewaretoken': $("input[name=csrfmiddlewaretoken]").val()},
             function (data) {
                 $('#comments').html(data);
             })

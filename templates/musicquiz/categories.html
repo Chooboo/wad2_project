@@ -21,7 +21,7 @@
                 <div class="text-center">
                     <!-- Category image that is clickable -->
                     <a href="{% url 'musicquiz:category' category.slug %}">
-                        <img class="cat-img rounded mx-auto" src="{{ MEDIA_URL }}{{ category.image_name }}" alt="{{ category.title }}"/>
+                        <img class="cat-img rounded mx-auto" src="{% static category.image_name %}" alt="{{ category.title }}"/>
                     </a>
                     <!-- Category names, depending on the resolution -->
                     <div class="d-none d-md-block cat-title">

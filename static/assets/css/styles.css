@@ -10,6 +10,18 @@ html, body {
     height:100%;
 }
 
+@media (max-width: 576px) {
+    body {
+        font-size: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        font-size: 14px;
+    }
+}
+
 canvas {
     display:block;
 }
@@ -76,6 +88,26 @@ canvas {
     left: 0;
     right: 0;
     top: 45%;
+}
+
+.avatar-thumbnail {
+    min-width: 50px;
+    min-height: 50px;
+    border-radius: 10px;
+}
+
+.avatar-thumbnail:hover {
+    transform: scale(1.05);
+}
+
+.comment-username {
+    color: black;
+    font-weight: bold;
+}
+
+.comment-username:hover {
+    color: black;
+    text-decoration: underline;
 }
 
 .index-yes {
