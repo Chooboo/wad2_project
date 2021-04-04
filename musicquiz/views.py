@@ -1,4 +1,6 @@
 from django.shortcuts import render, redirect
+from django.views.decorators.csrf import csrf_exempt
+
 from musicquiz.forms import UserProfileForm
 from django.contrib.auth import logout
 from django.http import HttpResponseRedirect
@@ -23,27 +25,45 @@ def categories(request):
     return render(request, 'musicquiz/categories.html', context=context_dict)
 
 
+@csrf_exempt
 def show_category(request, category_slug):
     context_dict = {}
 
-    try:
+    if request.method == 'POST':
         category = MusicCategory.objects.get(slug=category_slug)
-        comments = Comment.objects.filter(category=category)
-        context_dict['category'] = category
-        context_dict['comments'] = None
+        user = User.objects.get(id=request.POST['user-id'])
+        author = UserProfile.objects.get(user=user)
 
-    except MusicCategory.DoesNotExist:
-        context_dict['category'] = None
-        context_dict['comments'] = None
+        comment = Comment.objects.create(category=category, author=author)
+        comment.body = request.POST['body']
+        comment.save()
+        context_dict['comments'] = Comment.objects.filter(category=category).order_by('-likes')
 
-    if request.is_ajax():
-        template = 'musicquiz/components/comments.html'
-        category = MusicCategory.objects.get(slug=category_slug)
-        context_dict['comments'] = Comment.objects.filter(category=category)
+        return render(request, 'musicquiz/components/comments.html', context=context_dict)
+
     else:
-        template = 'musicquiz/category.html'
+        try:
+            category = MusicCategory.objects.get(slug=category_slug)
+            comments = Comment.objects.filter(category=category).order_by('-likes')
+            context_dict['category'] = category
+            context_dict['comments'] = comments
 
-    return render(request, template, context=context_dict)
+        except MusicCategory.DoesNotExist:
+            context_dict['category'] = None
+            context_dict['comments'] = None
+
+        return render(request, 'musicquiz/category.html', context=context_dict)
+
+
+def remove_comment(request, category_slug, comment_id):
+    context_dict = {}
+    Comment.objects.filter(id=comment_id).delete()
+    category = MusicCategory.objects.get(slug=category_slug)
+    comments = Comment.objects.filter(category=category).order_by('-likes')
+    context_dict['category'] = category
+    context_dict['comments'] = comments
+
+    return render(request, 'musicquiz/components/comments.html', context=context_dict)
 
 
 def quiz(request):

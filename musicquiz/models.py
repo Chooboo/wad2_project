@@ -4,14 +4,6 @@ from django.template.defaultfilters import slugify
 from django.utils import timezone
 
 
-class UserProfile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    picture = models.ImageField(upload_to='profile_images', default="default_profile_pic.png")
-    
-    def __str__(self):
-        return self.user.username
-
-
 class MusicCategory(models.Model):
     title = models.CharField(max_length=50, unique=True)
     description = models.TextField()
@@ -28,6 +20,14 @@ class MusicCategory(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class UserProfile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    picture = models.ImageField(upload_to='profile_images', default="default_profile_pic.png")
+
+    def __str__(self):
+        return self.user.username
 
 
 class Comment(models.Model):

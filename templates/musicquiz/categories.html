@@ -19,10 +19,12 @@
 
             <div class="col-md pt-4 category-container">
                 <div class="text-center">
+                    <!-- Category image that is clickable -->
                     <a href="{% url 'musicquiz:category' category.slug %}">
                         <img class="cat-img rounded mx-auto" src="{{ MEDIA_URL }}{{ category.image_name }}" alt="{{ category.title }}"/>
                     </a>
-                    <div class="cat-title">
+                    <!-- Category names, depending on the resolution -->
+                    <div class="d-none d-md-block cat-title">
                         <div class="cat-title-text">{{ category.title }}</div>
                     </div>
                     <div class="d-md-none">

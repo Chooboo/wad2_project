@@ -47,6 +47,10 @@ canvas {
     opacity:1;
 }
 
+#comment-body {
+    resize: none;
+}
+
 
 .heading-wrapper {
     background-color: #1b4000;

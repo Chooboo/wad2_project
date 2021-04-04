@@ -20,7 +20,7 @@
 
     <h1>{{ selecteduser.username }}'s Profile</h1>
 
-    <img id="profile-picture" src="{{ MEDIA_URL }}default_profile_pic.png" alt="No Image" />
+    <img id="profile-picture" src="{{ MEDIA_URL }}{{ userprofile.picture }}" alt="User avatar" />
 
     <hr>
     <div>
@@ -34,8 +34,8 @@
     </div>
     <div id="edit_profile"></div>
     <hr>
-    <p>Bio? <br/>
-        Category?</p>
+    Email: {{ selecteduser.email}} <br/>
+    Category: ?</p>
 </div>
 
 {% endblock %}
