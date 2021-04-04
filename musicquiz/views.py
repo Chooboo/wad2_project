@@ -92,7 +92,6 @@ def register_profile(request):
     return render(request, 'musicquiz/profile_registration.html', context_dict)
 
 
-@login_required
 def profile(request, username):
     try:
         user = User.objects.get(username=username)
