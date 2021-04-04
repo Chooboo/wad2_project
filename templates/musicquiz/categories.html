@@ -17,12 +17,17 @@
                 <div class="row">
             {% endif %}
 
-            <div class="col-md">
+            <div class="col-md pt-4 category-container">
                 <div class="text-center">
                     <a href="{% url 'musicquiz:category' category.slug %}">
                         <img class="cat-img rounded mx-auto" src="{{ MEDIA_URL }}{{ category.image_name }}" alt="{{ category.title }}"/>
                     </a>
-                    <p class="cat-title text-center">{{ category.title }}</p>
+                    <div class="cat-title">
+                        <div class="cat-title-text">{{ category.title }}</div>
+                    </div>
+                    <div class="d-md-none">
+                        <p class="pt-2">{{ category.title }}</p>
+                    </div>
                 </div>
             </div>
         <!-- Properly terminate the row we added -->

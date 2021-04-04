@@ -30,7 +30,7 @@ def show_category(request, category_slug):
         category = MusicCategory.objects.get(slug=category_slug)
         comments = Comment.objects.filter(category=category)
         context_dict['category'] = category
-        context_dict['comments'] = comments
+        context_dict['comments'] = None
 
     except MusicCategory.DoesNotExist:
         context_dict['category'] = None
@@ -38,6 +38,8 @@ def show_category(request, category_slug):
 
     if request.is_ajax():
         template = 'musicquiz/components/comments.html'
+        category = MusicCategory.objects.get(slug=category_slug)
+        context_dict['comments'] = Comment.objects.filter(category=category)
     else:
         template = 'musicquiz/category.html'
 

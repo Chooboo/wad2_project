@@ -17,13 +17,15 @@
 
         <!-- Comment section -->
         <div class="container-md mt-5 mx-auto p-3" style="background-color:darkgray">
-
             <h4 class="text-center">A wee section of hate:</h4>
 
-            {% include "musicquiz/components/comments.html" %}
+            <div id="comments">
+                {% include "musicquiz/components/comments.html" %}
+            </div>
 
             <!-- For adding comments -->
-            <form class="w-75 mx-auto">
+            <form id="add-comment" data-categoryslug="{{ category.slug }}" class="w-75 mx-auto">
+                {% csrf_token %}
                 <div class="form-group">
                     <label for="comment">Comment:</label>
                     <textarea class="form-control" rows="3" id="comment"></textarea>
