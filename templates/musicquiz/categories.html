@@ -12,6 +12,7 @@
         </div>
         <br/>
         {% for category in categories %}
+            <!-- Add a row every two categories -->
             {% if forloop.counter == 1 or forloop.counter == 3 %}
                 <div class="row">
             {% endif %}
@@ -21,10 +22,10 @@
                     <a href="{% url 'musicquiz:category' category.slug %}">
                         <img class="cat-img rounded mx-auto" src="{{ MEDIA_URL }}{{ category.image_name }}" alt="{{ category.title }}"/>
                     </a>
-                <p class="cat-title text-center">{{ category.title }}</p>
+                    <p class="cat-title text-center">{{ category.title }}</p>
                 </div>
             </div>
-
+        <!-- Properly terminate the row we added -->
         {% if forloop.counter == 2 or forloop.counter == 4 %}
             </div>
         {% endif %}

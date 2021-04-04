@@ -36,7 +36,12 @@ def show_category(request, category_slug):
         context_dict['category'] = None
         context_dict['comments'] = None
 
-    return render(request, 'musicquiz/category.html', context=context_dict)
+    if request.is_ajax():
+        template = 'musicquiz/components/comments.html'
+    else:
+        template = 'musicquiz/category.html'
+
+    return render(request, template, context=context_dict)
 
 
 def quiz(request):

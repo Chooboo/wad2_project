@@ -20,34 +20,9 @@
 
             <h4 class="text-center">A wee section of hate:</h4>
 
-            <div class="container">
-                {% for comment in comments %}
-                    <div class="card mx-auto w-75 mb-3 p-3" style="color:black">
-                        <div class="row">
-                            <div class="col-1">
-                                <img src="{{ MEDIA_URL }}{{ comment.author.picture }}"
-                                     class="img-fluid"
-                                     style="min-width:50px; min-height:50px; border-radius: 10px"
-                                     alt="avatar_thumbnail"/>
-                            </div>
-                            <div class="col-auto">
-                                <strong>{{ comment.author }}</strong>
-                                <p>{{ comment.body }}</p>
-                            </div>
-                        </div>
-                        <span>
-                            {{ comment.date_added }}
-                            <span class="float-right">{{ comment.likes }}</span>
-                        </span>
-                    </div>
+            {% include "musicquiz/components/comments.html" %}
 
-                {% empty %}
-                    <p class="text-center">Nobody feels offended yet.<br />
-                        Lead by example by hating on us first!</p>
-                {% endfor %}
-            </div>
-
-            <!-- Add comment section -->
+            <!-- For adding comments -->
             <form class="w-75 mx-auto">
                 <div class="form-group">
                     <label for="comment">Comment:</label>
