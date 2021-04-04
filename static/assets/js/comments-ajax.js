@@ -1,6 +1,8 @@
 $(document).ready(function(){
     $("#add-comment").submit(function (e){
         e.preventDefault();
+        let cookie = document.cookie;
+        let csrfToken = cookie.substring(cookie.indexOf('=') + 1);
         let categorySlug = $(this).attr('data-categoryslug');
         let userId = $(this).attr('data-userid');
         let commentBody = $('#comment-body').val();
@@ -9,7 +11,8 @@ $(document).ready(function(){
 
         $.post('/category/' + categorySlug + '/',
             {'user-id' : userId,
-            'body': commentBody},
+            'body': commentBody,
+            'csrfmiddlewaretoken': csrfToken},
             function (data) {
                 $('#comments').html(data);
             })

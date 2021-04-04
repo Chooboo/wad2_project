@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.csrf import csrf_exempt, ensure_csrf_cookie
 
 from musicquiz.forms import UserProfileForm
 from django.contrib.auth import logout
@@ -25,7 +25,6 @@ def categories(request):
     return render(request, 'musicquiz/categories.html', context=context_dict)
 
 
-@csrf_exempt
 def show_category(request, category_slug):
     context_dict = {}
 
