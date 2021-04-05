@@ -37,7 +37,7 @@ class Comment(models.Model):
     author = models.ForeignKey(UserProfile, related_name="author", blank=False, on_delete=models.CASCADE)
     body = models.CharField(max_length=300, blank=False)
     date_added = models.DateTimeField(default=timezone.now)
-    likes = models.ManyToManyField(UserProfile, related_name="liked_by")
+    likes = models.ManyToManyField(UserProfile, related_name="liked_by", blank=True)
 
     def __str__(self):
         return self.body[:20]

@@ -29,7 +29,7 @@
                 </div>
                 {% endif %}
             </div>
-            <!-- Date added & likes -->
+            <!-- Date added and like numbers -->
             <div class="row align-items-center comments-bottom">
                 <div class="col-7">
                     {{ comment.date_added }}
@@ -38,9 +38,28 @@
                     <span class="float-right">{{ comment.likes.count }} likes</span>
                 </div>
                 <div class="col-2">
-                    <button class="btn like-button float-right">
+                <!-- Like buttons -->
+                {% if user.is_authenticated %}
+                    {% if user.userprofile in comment.likes.all %}
+                        <button class="btn like-button float-right"
+                                data-categoryslug="{{ category.slug }}"
+                                data-commentid="{{ comment.id }}"
+                                data-userid="{{ user.id }}">
+                            <i class="fa fa-thumbs-up"></i> Unlike
+                        </button>
+                    {% else %}
+                        <button class="btn like-button float-right"
+                                data-categoryslug="{{ category.slug }}"
+                                data-commentid="{{ comment.id }}"
+                                data-userid="{{ user.id }}">
+                            <i class="fa fa-thumbs-up"></i> Like
+                        </button>
+                    {% endif %}
+                {% else %}
+                    <button class="btn like-button float-right disabled">
                         <i class="fa fa-thumbs-up"></i> Like
                     </button>
+                {% endif %}
                 </div>
             </div>
         </div>

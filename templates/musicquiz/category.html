@@ -43,7 +43,9 @@
                     </div>
                 </form>
             {% else %}
-                Please log in to scream.
+                <div>
+                    Please <a href="{% url 'auth_login' %}">Log In</a> to add or like comments.
+                </div>
             {% endif %}
         </div>
     </div>

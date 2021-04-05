@@ -164,6 +164,18 @@ canvas {
     color: white;
 }
 
+.unlike-button {
+    font-size: 0.7rem;
+    color: white;
+    background-color: red;
+    padding: 0.30rem;
+}
+
+.unlike-button:hover {
+    background-color: darkred;
+    color: white;
+}
+
 .remove-comment {
     background-color: red;
     color: white;

@@ -9,6 +9,7 @@ urlpatterns = [
     path('categories/', views.categories, name='categories'),
     path('category/<slug:category_slug>/', views.show_category, name='category'),
     path('category/<slug:category_slug>/remove-comment/<slug:comment_id>/', views.remove_comment, name='remove_comment'),
+    path('category/<slug:category_slug>/toggle-like/<slug:comment_id>/', views.toggle_like, name='toggle_like'),
     path('quiz/', views.quiz, name='quiz'),
     path('error/', views.error, name='error'),
     path('logout/', views.user_logout, name='logout'),

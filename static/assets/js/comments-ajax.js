@@ -27,4 +27,15 @@ $(document).ready(function(){
                 $('#comments').html(data);
         })
     });
+    $("body").on("click", ".like-button", function() {
+        let commentId = $(this).attr('data-commentid');
+        let categorySlug = $(this).attr('data-categoryslug');
+        let userId = $(this).attr('data-userid');
+
+        $.get('/category/' + categorySlug + '/toggle-like/' + commentId + '/',
+            {'user-id': userId},
+            function (data) {
+                $('#comments').html(data);
+        })
+    })
 });

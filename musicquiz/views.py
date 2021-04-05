@@ -36,11 +36,7 @@ def show_category(request, category_slug):
         comment = Comment.objects.create(category=category, author=author)
         comment.body = request.POST['body']
         comment.save()
-        context_dict['comments'] = Comment.objects.filter(category=category)\
-                                                  .annotate(like_count=Count('likes'))\
-                                                  .order_by('-like_count')
-
-        return render(request, 'musicquiz/components/comments.html', context=context_dict)
+        return render_comments(request, category_slug)
 
     else:
         try:
@@ -59,14 +55,33 @@ def show_category(request, category_slug):
 
 
 def remove_comment(request, category_slug, comment_id):
-    context_dict = {}
     Comment.objects.filter(id=comment_id).delete()
-    category = MusicCategory.objects.get(slug=category_slug)
-    comments = Comment.objects.filter(category=category) \
-                              .annotate(like_count=Count('likes')) \
-                              .order_by('-like_count')
-    context_dict['category'] = category
-    context_dict['comments'] = comments
+    return render_comments(request, category_slug)
+
+
+def toggle_like(request, category_slug, comment_id):
+    comment = Comment.objects.get(id=comment_id)
+    userprofile = User.objects.get(id=request.GET['user-id']).userprofile
+    if userprofile in comment.likes.all():
+        comment.likes.remove(userprofile)
+    else:
+        comment.likes.add(userprofile)
+
+    return render_comments(request, category_slug)
+
+
+def render_comments(request, category_slug):
+    context_dict = {}
+    try:
+        category = MusicCategory.objects.get(slug=category_slug)
+        comments = Comment.objects.filter(category=category) \
+            .annotate(like_count=Count('likes')) \
+            .order_by('-like_count')
+        context_dict['category'] = category
+        context_dict['comments'] = comments
+    except MusicCategory.DoesNotExist:
+        context_dict['category'] = None
+        context_dict['comments'] = None
 
     return render(request, 'musicquiz/components/comments.html', context=context_dict)
 
