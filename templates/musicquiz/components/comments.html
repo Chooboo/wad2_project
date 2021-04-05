@@ -3,7 +3,7 @@
             <div class="row justify-content-between">
                 <!-- User's picture -->
                 <div class="col-10">
-                    <a href="{% url 'musicquiz:profile' comment.author.user.username %}">
+                    <a href="{% url 'musicquiz:profile' comment.author.user.username %}" class="thumbnail-link">
                         <img src="{{ MEDIA_URL }}{{ comment.author.picture }}"
                              class="avatar-thumbnail"
                              alt="avatar_thumbnail"/>
@@ -30,11 +30,11 @@
                 {% endif %}
             </div>
             <!-- Date added & likes -->
-            <div class="row align-items-center">
-                <div class="col-8">
+            <div class="row align-items-center comments-bottom">
+                <div class="col-7">
                     {{ comment.date_added }}
                 </div>
-                <div class="col-2">
+                <div class="col-3">
                     <span class="float-right">{{ comment.likes }} likes</span>
                 </div>
                 <div class="col-2">

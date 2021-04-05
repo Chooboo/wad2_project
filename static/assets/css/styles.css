@@ -59,8 +59,28 @@ canvas {
     opacity:1;
 }
 
-#comment-body {
-    resize: none;
+#comments {
+    font-size: 0.9em;
+}
+
+@media (min-width: 769px){
+    .comment-section {
+        width: 75%;
+    }
+}
+
+.form-control {
+    background-color: #275f00;
+    border-color: #275f00;
+    color:white;
+    max-width: 50%;
+}
+
+.form-control:focus {
+    background-color: #275f00;
+    border-color: #275f00;
+    color:white;
+    max-width: 50%;
 }
 
 .heading-wrapper {
@@ -100,13 +120,17 @@ canvas {
 }
 
 .avatar-thumbnail {
-    width: 50px;
-    height: 50px;
+    width: 3rem;
+    height: 3rem;
     border-radius: 10px;
 }
 
 .avatar-thumbnail:hover {
     transform: scale(1.05);
+}
+
+.thumbnail-link:hover {
+    text-decoration: none;
 }
 
 .comment-username {
@@ -124,14 +148,12 @@ canvas {
     margin-top: -0.75rem;
 }
 
-@media (max-width: 768px) {
-    .comment-text {
-        padding-left: 4.25rem;
-    }
+.comments-bottom {
+    font-size: 0.95em;
 }
 
 .like-button {
-    font-size: 0.70rem;
+    font-size: 0.7rem;
     color: white;
     background-color: dodgerblue;
     padding: 0.30rem;
@@ -145,7 +167,7 @@ canvas {
 .remove-comment {
     background-color: red;
     color: white;
-    padding: 0 0.30rem;
+    padding: 0 0.3rem;
 }
 
 .remove-comment:hover {
@@ -186,16 +208,15 @@ canvas {
     background-color: #e00000;
 }
 
+#comment-body {
+    resize: none;
+    max-width: 100%;
+}
+
 #particles-js{
     width: 100%;
     height: 100%;
 }
-
-.full-page {
-    width: 100%;
-    height: 100%;
-}
-
 
 #bootstrap-overrides .nav-link {
     color: #00ff29;
