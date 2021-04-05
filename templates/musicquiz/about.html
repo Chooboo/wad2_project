@@ -7,19 +7,6 @@
 
 {% block body %}
 <style>
-    img {
-        height: 250px;
-        width: 250px;
-        border-radius: 50%;
-        background-position: center center;
-        background-size: cover;
-        border: 5px solid #555;
-    }
-    hr.rounded {
-  		border-top: 8px solid #bbb;
-  		border-radius: 5px;
-  		border-color:#000000;
-	}
 </style>
     <div class="container main-content">
         <div class="heading-wrapper">
@@ -39,13 +26,13 @@
         <br/>
         <div class="row">
             <div class="col">
-                <img id="creator-images" src="{{ MEDIA_URL }}goose.jpg" />
+                <img class="avatar-big" src="{{ MEDIA_URL }}goose.jpg" />
             </div>
             <div class="col">
-                <img id="creator-images" src="{{ MEDIA_URL }}zebra.jpg" />
+                <img class="avatar-big" src="{{ MEDIA_URL }}zebra.jpg" />
             </div>
             <div class="col">
-                <img id="creator-images" src="{{ MEDIA_URL }}vibecat.jpg" />
+                <img class="avatar-big" src="{{ MEDIA_URL }}vibecat.jpg" />
             </div>
         </div>
 

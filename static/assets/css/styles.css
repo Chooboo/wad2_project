@@ -213,6 +213,26 @@ canvas {
     max-width: 100%;
 }
 
+.logo{
+    max-width:5rem;
+    max-height:6rem;
+}
+
+.avatar-big {
+    height: 250px;
+    width: 250px;
+    border-radius: 50%;
+    background-position: center center;
+    background-size: cover;
+    border: 5px solid #555;
+}
+
+hr.rounded {
+    border-top: 8px solid #bbb;
+    border-radius: 5px;
+    border-color:#000000;
+}
+
 #particles-js{
     width: 100%;
     height: 100%;

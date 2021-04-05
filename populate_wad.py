@@ -1,4 +1,5 @@
 import os
+import random
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE',
                       'wad2_project.settings')
@@ -18,17 +19,35 @@ def add_category(title, description, image_name):
     return cat
 
 
-def create_mock_user():
+def create_mock_users():
+    userprofiles = []
+
     user = User.objects.get_or_create(username="soyjak123", password="nooo")[0]
     userprofile = UserProfile.objects.get_or_create(user=user)[0]
+    userprofile.picture = "profile_images/soyjak.jpg"
+    userprofile.save()
+    userprofiles.append(userprofile)
 
-    return userprofile
+    user = User.objects.get_or_create(username="chad47", password="xxx")[0]
+    userprofile = UserProfile.objects.get_or_create(user=user)[0]
+    userprofile.picture = "profile_images/chad.png"
+    userprofile.save()
+    userprofiles.append(userprofile)
+
+    user = User.objects.get_or_create(username="npc000074652", password="beepboop")[0]
+    userprofile = UserProfile.objects.get_or_create(user=user)[0]
+    userprofile.picture = "profile_images/npc.jpg"
+    userprofile.save()
+    userprofiles.append(userprofile)
+
+    return userprofiles
 
 
-def add_comment(category, author, body, likes):
+def add_comment(category, author, body, liking_users):
     comment = Comment.objects.create(category=category, author=author)
     comment.body = body
-    comment.likes = likes
+    for i in range(random.randint(0, 3)):
+        comment.likes.add(liking_users[i])
     comment.save()
 
     return comment
@@ -36,10 +55,9 @@ def add_comment(category, author, body, likes):
 
 def populate():
     baby_comments = [
-        {'body': 'I hate you all, you ruined my life!',
-         'likes': 13},
-        {'body': 'goo goo gaa gaa',
-         'likes': 33}
+        {'body': 'I hate you all, you ruined my life!'},
+        {'body': 'Meow'},
+        {'body': 'Beep boop'},
     ]
 
     categories = {
@@ -67,14 +85,13 @@ def populate():
             'image_name': 'adult.jpg'},
     }
 
-    userprofile = create_mock_user()
+    userprofiles = create_mock_users()
     for category, data in categories.items():
         cat = add_category(category, data['description'], data['image_name'])
         if data.get('comments') is not None:
-            for comment in data['comments']:
+            for i, comment in enumerate(data['comments']):
                 print(comment['body'][:10])
-                c = add_comment(cat, userprofile, comment['body'], comment['likes'])
-                print(c.id)
+                c = add_comment(cat, userprofiles[i % 3], comment['body'], userprofiles)
 
 
 if __name__ == "__main__":

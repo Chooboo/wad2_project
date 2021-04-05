@@ -6,23 +6,13 @@
 {% endblock %}
 
 {% block body %}
-<style>
-    img {
-        height: 250px;
-        width: 250px;
-        border-radius: 50%;
-        background-position: center center;
-        background-size: cover;
-        border: 5px solid #555;
-    }
-</style>
 <div class="container-md main-content">
 
     <div class="heading-wrapper">
         <h2 class="text-center">{{ selecteduser.username }}'s Profile</h2>
     </div>
 
-    <img id="profile-picture" src="{{ MEDIA_URL }}{{ userprofile.picture }}" alt="User avatar" />
+    <img class="avatar-big" src="{{ MEDIA_URL }}{{ userprofile.picture }}" alt="User avatar" />
 
     <hr>
     <div>

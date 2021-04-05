@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.views.decorators.csrf import csrf_exempt, ensure_csrf_cookie
+from django.db.models import Count
 
 from musicquiz.forms import UserProfileForm
 from django.contrib.auth import logout
@@ -36,14 +36,18 @@ def show_category(request, category_slug):
         comment = Comment.objects.create(category=category, author=author)
         comment.body = request.POST['body']
         comment.save()
-        context_dict['comments'] = Comment.objects.filter(category=category).order_by('-likes')
+        context_dict['comments'] = Comment.objects.filter(category=category)\
+                                                  .annotate(like_count=Count('likes'))\
+                                                  .order_by('-like_count')
 
         return render(request, 'musicquiz/components/comments.html', context=context_dict)
 
     else:
         try:
             category = MusicCategory.objects.get(slug=category_slug)
-            comments = Comment.objects.filter(category=category).order_by('-likes')
+            comments = Comment.objects.filter(category=category) \
+                                      .annotate(like_count=Count('likes')) \
+                                      .order_by('-like_count')
             context_dict['category'] = category
             context_dict['comments'] = comments
 
@@ -58,7 +62,9 @@ def remove_comment(request, category_slug, comment_id):
     context_dict = {}
     Comment.objects.filter(id=comment_id).delete()
     category = MusicCategory.objects.get(slug=category_slug)
-    comments = Comment.objects.filter(category=category).order_by('-likes')
+    comments = Comment.objects.filter(category=category) \
+                              .annotate(like_count=Count('likes')) \
+                              .order_by('-like_count')
     context_dict['category'] = category
     context_dict['comments'] = comments
 
