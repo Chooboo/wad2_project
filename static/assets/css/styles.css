@@ -22,8 +22,36 @@ html, body {
     }
 }
 
-canvas {
-    display:block;
+.about-us-logo {
+    width: 20rem;
+}
+
+@media (max-width: 1200px) {
+    .about-us-logo {
+        width: 15rem;
+        padding-top: 2rem;
+    }
+}
+
+.avatar-big {
+    width: 15rem;
+    height: 15rem;
+    border-radius: 50%;
+    border: 5px solid #555;
+}
+
+@media (max-width: 992px) {
+    .avatar-big {
+        width: 10rem;
+        height: 10rem;
+    }
+}
+
+@media (max-width: 508px) {
+    .avatar-big {
+        width: 6rem;
+        height: 6rem;
+    }
 }
 
 .cat-img {
@@ -63,7 +91,7 @@ canvas {
     font-size: 0.9em;
 }
 
-@media (min-width: 769px){
+@media (min-width: 1200px){
     .comment-section {
         width: 75%;
     }
@@ -101,7 +129,7 @@ canvas {
     border-radius: 15px;
 }
 
-@media (max-width: 768px)  {
+@media (max-width: 1200px)  {
     .main-content {
         padding: 1rem;
     }
@@ -230,15 +258,6 @@ canvas {
     max-height:6rem;
 }
 
-.avatar-big {
-    height: 250px;
-    width: 250px;
-    border-radius: 50%;
-    background-position: center center;
-    background-size: cover;
-    border: 5px solid #555;
-}
-
 hr.rounded {
     border-top: 8px solid #bbb;
     border-radius: 5px;
@@ -250,15 +269,11 @@ hr.rounded {
     height: 100%;
 }
 
-#bootstrap-overrides .nav-link {
+#navbar-override .nav-link {
     color: #00ff29;
 }
 
-#bootstrap-overrides .navbar-brand{
-    color: #00ff29;
-}
-
-#bootstrap-overrides .btn.btn-light{
+#navbar-override .btn.btn-light{
     border-style: none;
     border-radius: 15px;
     background: #00ff29;
@@ -266,13 +281,9 @@ hr.rounded {
     font-size: 16px;
 }
 
-#bootstrap-overrides .login {
+#navbar-override .login {
     color: #00ff29;
 }
 
-.custom-content {
-    padding: 5rem 0;
-    text-align: center;
-}
 
 

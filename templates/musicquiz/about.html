@@ -9,30 +9,46 @@
 <style>
 </style>
     <div class="container main-content">
-        <div class="heading-wrapper">
-            <h2 class="text-center">About us</h2>
+        <div class="text-center mb-3 mt-n5">
+            <img src="{% static 'images/logo.png' %}" class="img-fluid about-us-logo" alt="DP Logo"/>
         </div>
-        <br/>
-        <hr class="rounded">
 
-        <p class="text-justify">Here at Digital Planet, we are passionate about connecting users across the globe and allowing them to communicate about
+        <div class="heading-wrapper">
+            <h2 class="text-center">Digital Planet</h2>
+        </div>
+
+        <br/>
+
+        <p class="text-center">Here at Digital Planet, we are passionate about connecting users across the globe and allowing them to communicate about
             music. We feel it is important to be able to share and discuss music with everyone, no matter how far away they might be.</p>
-        <p class="text-justify">Using cutting edge technology, we have developed a state of the art quiz which will accurately define our users music taste
-            into one of five categories. Our users are then able to communicate via the forms for each category!
+        <p class="text-center">Using cutting edge technology, we have developed a state of the art quiz which will accurately define our users music taste
+            into one of four categories. Our users are then able to communicate via the forms for each category!
         </p>
         <hr class="rounded">
         <br/>
         <h2 class="text-center">Meet the developers!</h2>
         <br/>
         <div class="row">
-            <div class="col">
+            <div class="col text-center">
                 <img class="avatar-big" src="{{ MEDIA_URL }}goose.jpg" />
+                <h4 class="pt-3 pb-1">Lucas Lemoine</h4>
+                <h6>Login/Registration</h6>
+                <h6>About Page</h6>
+                <h6>Testing</h6>
             </div>
-            <div class="col">
+            <div class="col text-center">
                 <img class="avatar-big" src="{{ MEDIA_URL }}zebra.jpg" />
+                <h4 class="pt-3 pb-1">Nadim Abdel Rahman</h4>
+                <h6>Quiz/Questions</h6>
+                <h6>Artwork</h6>
+                <h6>Video</h6>
             </div>
-            <div class="col">
+            <div class="col text-center">
                 <img class="avatar-big" src="{{ MEDIA_URL }}vibecat.jpg" />
+                <h4 class="pt-3 pb-1">Jakub Suriak</h4>
+                <h6>Categories Pages</h6>
+                <h6>Forums</h6>
+                <h6>Frontend</h6>
             </div>
         </div>
 

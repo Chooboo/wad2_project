@@ -12,22 +12,29 @@
         <h2 class="text-center">{{ selecteduser.username }}'s Profile</h2>
     </div>
 
-    <img class="avatar-big" src="{{ MEDIA_URL }}{{ userprofile.picture }}" alt="User avatar" />
+    <div class="row align-items-center pt-4">
+        <div class="col-3">
+            <img class="avatar-big" src="{{ MEDIA_URL }}{{ userprofile.picture }}" alt="User avatar" />
+        </div>
+        <div class="col-auto">
+                <h4>Email: {{ selecteduser.email}}</h4>
+            {% if selecteduser.category %}
+                <h4>Category: {{ selecteduser.category.title }}</h4>
+            {% else %}
+                <h4>Category: None</h4>
+            {% endif %}
+        </div>
+    </div>
 
-    <hr>
-    <div>
+    <div class="row p-4">
         {% if selecteduser.username == user.username %}
             <form method="post" action="." enctype="multipart/form-data">
                 {% csrf_token %}
                 {{ form.as_p }}
-                <input type="submit" value="Update"/>
+                <input type="submit" class="btn index-yes" value="Update"/>
             </form>
         {% endif %}
     </div>
-    <div id="edit_profile"></div>
-    <hr>
-    Email: {{ selecteduser.email}} <br/>
-    Category: ?</p>
 </div>
 
 {% endblock %}
