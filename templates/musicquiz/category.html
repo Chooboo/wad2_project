@@ -6,17 +6,17 @@
 {% endblock %}
 
 {% block body %}
-    <div class="container main-content">
+    <div class="container-lg main-content">
         <!-- Info section -->
         <div class="heading-wrapper">
             <h2 class="text-center">{{ category.title }}</h2>
         </div>
         <br />
         <img class="img-fluid rounded mx-auto d-block" src="{% static category.image_name %}" alt="{{ category.title }}"/>
-        <h4 class="text-justify mt-4">{{ category.description }}</h4>
+        <h5 class="text-justify mt-4">{{ category.description }}</h5>
 
         <!-- Comment section -->
-        <div class="container-md mt-5 mx-auto p-3">
+        <div class="container-fluid mt-5 mx-auto p-0 p-md-5">
             <!-- Comment section title -->
             <div class="heading-wrapper">
                 <h4 class="text-center">A wee section of hate:</h4>

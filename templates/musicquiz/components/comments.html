@@ -1,45 +1,51 @@
-<div class="container">
     {% for comment in comments %}
-        <div class="card mx-auto mb-3 p-3" style="color:black">
-            <div class="row">
+        <div class="card mx-auto mb-3 p-3" style="color:black; background-color: white">
+            <div class="row justify-content-between">
                 <!-- User's picture -->
-                <div class="col-1">
+                <div class="col-10">
                     <a href="{% url 'musicquiz:profile' comment.author.user.username %}">
                         <img src="{{ MEDIA_URL }}{{ comment.author.picture }}"
-                             class="img-fluid avatar-thumbnail"
+                             class="avatar-thumbnail"
                              alt="avatar_thumbnail"/>
                     </a>
-                </div>
 
-                <!-- User's name and their comment -->
-                <div class="col-10">
-                    <a href="{% url 'musicquiz:profile' comment.author.user.username %}" class="comment-username">
-                        {{ comment.author }}
-                    </a>
-                    <p>{{ comment.body }}</p>
+                    <!-- User's name and their comment -->
+                    <div class="d-inline">
+                        <a href="{% url 'musicquiz:profile' comment.author.user.username %}" class="comment-username">
+                            {{ comment.author }}
+                        </a>
+                        <p class="comment-text">{{ comment.body }}</p>
+                    </div>
                 </div>
 
                 <!-- Remove review button -->
                 {% if user.id == comment.author.id %}
-                    <div class="col-1">
-                        <button class="btn btn-danger remove-comment"
-                                data-categoryslug="{{ category.slug }}"
-                                data-commentid="{{ comment.id }}">
-                            X
-                        </button>
-                    </div>
+                <div class="col-2">
+                    <button class="btn float-right remove-comment"
+                            data-categoryslug="{{ category.slug }}"
+                            data-commentid="{{ comment.id }}">
+                        <i class="fa fa-remove"></i>
+                    </button>
+                </div>
                 {% endif %}
             </div>
-            <p>
-                {{ comment.date_added }}
-                <span class="float-right">{{ comment.likes }} likes</span>
-                <button class="btn btn-primary btn-sm">
-                    <i class="fa fa-thumbs-up"></i> Like
-                </button>
+            <!-- Date added & likes -->
+            <div class="row align-items-center">
+                <div class="col-8">
+                    {{ comment.date_added }}
+                </div>
+                <div class="col-2">
+                    <span class="float-right">{{ comment.likes }} likes</span>
+                </div>
+                <div class="col-2">
+                    <button class="btn like-button float-right">
+                        <i class="fa fa-thumbs-up"></i> Like
+                    </button>
+                </div>
+            </div>
         </div>
 
     {% empty %}
         <p class="text-center">Nobody feels offended yet.<br />
             Lead by example by hating on us first!</p>
     {% endfor %}
-</div>
