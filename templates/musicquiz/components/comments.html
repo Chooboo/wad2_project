@@ -1,5 +1,5 @@
     {% for comment in comments %}
-        <div class="card mx-auto mb-3 p-3" style="color:black; background-color: white">
+        <div class="card mx-auto mb-3 p-3 comment-card">
             <div class="row justify-content-between">
                 <!-- User's picture -->
                 <div class="col-10">
@@ -59,7 +59,7 @@
                     {% endif %}
                 <!-- Like disabled -->
                 {% else %}
-                    <button class="btn like-button float-right disabled">
+                    <button class="btn like-button-disabled float-right disabled">
                         <i class="fa fa-thumbs-up"></i> Like
                     </button>
                 {% endif %}

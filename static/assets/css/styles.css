@@ -136,6 +136,12 @@ html, body {
     border-bottom-right-radius: 15px;
 }
 
+@media (max-width: 1200px)  {
+    .main-content {
+        padding: 1rem;
+    }
+}
+
 .main-content {
     position: absolute;
     top: 15%;
@@ -144,12 +150,6 @@ html, body {
     padding: 3rem 2rem;
     background-color: #1d2124;
     border-radius: 15px;
-}
-
-@media (max-width: 1200px)  {
-    .main-content {
-        padding: 1rem;
-    }
 }
 
 .home-page {
@@ -162,6 +162,11 @@ html, body {
 
 .home-title {
     font-size: 2.5rem;
+}
+
+.comment-card {
+    background-color: whitesmoke;
+    color: black;
 }
 
 .avatar-thumbnail {
@@ -197,14 +202,14 @@ html, body {
     font-size: 0.95em;
 }
 
-.like-button {
+.like-button, .like-button-disabled{
     font-size: 0.7rem;
     color: white;
     background-color: dodgerblue;
     padding: 0.30rem;
 }
 
-.like-button:hover {
+.like-button:hover, .like-button-disabled:hover {
     background-color: #263fff;
     color: white;
 }
