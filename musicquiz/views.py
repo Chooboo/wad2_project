@@ -6,7 +6,7 @@ from django.contrib.auth import logout
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, AnonymousUser
 from musicquiz.models import UserProfile, MusicCategory, Comment, QuizQuestion
 
 
@@ -119,7 +119,7 @@ def quiz_results(request, points):
         category_slug = 'the-faded-adult'
 
     # If user is logged in, set his category
-    if request.user:
+    if request.user.is_authenticated:
         category = MusicCategory.objects.get(slug=category_slug)
         userprofile = UserProfile.objects.get(user=request.user)
         userprofile.category = category
