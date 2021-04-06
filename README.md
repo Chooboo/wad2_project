@@ -1,9 +1,11 @@
 # How to run the project:
 Create a virtual environment first
 
-pip install -r requirements.txt
-
 git clone https://github.com/Chooboo/wad2_project.git
+
+cd wad2_project
+
+pip install -r requirements.txt
 
 python manage.py makemigrations musicquiz
 
