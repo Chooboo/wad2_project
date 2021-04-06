@@ -109,14 +109,16 @@ def show_question(request, question_id):
 
 def quiz_results(request, points):
     points = int(points)
-    if points < 5:
+    if points < 20:
         category_slug = 'innocent-baby'
-    elif points < 9:
+    elif points < 27:
         category_slug = 'the-awakening'
-    elif points < 13:
+    elif points < 35:
         category_slug = 'the-child'
-    else:
+    elif points < 35:
         category_slug = 'the-faded-adult'
+    else:
+        category_slug = 'transcendence'
 
     # If user is logged in, set his category
     if request.user.is_authenticated:

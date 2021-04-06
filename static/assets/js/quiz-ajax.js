@@ -13,7 +13,7 @@ $(document).ready(function(){
         let points = parseInt($("#point-counter").text());
         let newPoints = parseInt($("input[type='radio']:checked").val());
         if (!isNaN(newPoints)){
-            if (questionId !== 3) {
+            if (questionId !== 10) {
                 $.get('/quiz/question/' + (questionId + 1) + '/',
                     {'points': points + newPoints},
                     function (data) {
