@@ -18,8 +18,12 @@
         </div>
         <div class="col-auto">
                 <h4>Email: {{ selecteduser.email}}</h4>
-            {% if selecteduser.category %}
-                <h4>Category: {{ selecteduser.category.title }}</h4>
+            {% if userprofile.category %}
+                <h4>Category:
+                    <a href="{% url 'musicquiz:category' userprofile.category.slug %}">
+                        {{ userprofile.category.title }}
+                    </a>
+                </h4>
             {% else %}
                 <h4>Category: None</h4>
             {% endif %}
