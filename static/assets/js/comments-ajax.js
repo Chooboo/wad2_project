@@ -1,4 +1,5 @@
 $(document).ready(function(){
+    // Function for adding comments dynamically
     $("#add-comment").submit(function (e){
         e.preventDefault();
         let cookie = document.cookie;
@@ -18,6 +19,7 @@ $(document).ready(function(){
             })
 
     });
+    // Function for removing comments dynamically
     $("body").on("click", ".remove-comment",function() {
         let commentId = $(this).attr('data-commentid');
         let categorySlug = $(this).attr('data-categoryslug')
@@ -27,6 +29,7 @@ $(document).ready(function(){
                 $('#comments').html(data);
         })
     });
+    // Function for liking/disliking comments dynamically
     $("body").on("click", ".like-button", function() {
         let commentId = $(this).attr('data-commentid');
         let categorySlug = $(this).attr('data-categoryslug');

@@ -13,7 +13,7 @@
         <br/>
         {% for category in categories %}
             <!-- Add a row every two categories -->
-            {% if forloop.counter == 1 or forloop.counter == 3 %}
+            {% if forloop.counter == 1 or forloop.counter == 4 %}
                 <div class="row">
             {% endif %}
 
@@ -33,7 +33,7 @@
                 </div>
             </div>
         <!-- Properly terminate the row we added -->
-        {% if forloop.counter == 2 or forloop.counter == 4 %}
+        {% if forloop.counter == 2 or forloop.counter == 5 %}
             </div>
         {% endif %}
 

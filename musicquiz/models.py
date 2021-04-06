@@ -35,8 +35,21 @@ class Comment(models.Model):
     author = models.ForeignKey(UserProfile, related_name="author", blank=False, on_delete=models.CASCADE)
     body = models.CharField(max_length=300, blank=False)
     date_added = models.DateTimeField(default=timezone.now)
-    likes = models.ManyToManyField(UserProfile, related_name="liked_by", null=True)
+    likes = models.ManyToManyField(UserProfile, related_name="liked_by")
 
     def __str__(self):
         return self.body[:20]
+
+
+class QuizQuestion(models.Model):
+    question_id = models.IntegerField(blank=False, unique=True)
+    question_text = models.CharField(max_length=200, default="default text")
+    choice_1 = models.CharField(max_length=100)
+    choice_2 = models.CharField(max_length=100)
+    choice_3 = models.CharField(max_length=100)
+    choice_4 = models.CharField(max_length=100)
+
+    def __str__(self):
+        return "Question " + str(self.question_id) + ": " + self.question_text[:20]
+
 

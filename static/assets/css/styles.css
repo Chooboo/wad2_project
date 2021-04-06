@@ -258,6 +258,16 @@ html, body {
     max-height:6rem;
 }
 
+.questions {
+    width:50%;
+}
+
+@media (max-width: 992px) {
+    .questions {
+        width: 100%;
+    }
+}
+
 hr.rounded {
     border-top: 8px solid #bbb;
     border-radius: 5px;

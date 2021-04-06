@@ -6,18 +6,16 @@ from django.contrib.auth import logout
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.models import User
-from musicquiz.models import UserProfile, MusicCategory, Comment
+from django.contrib.auth.models import User, AnonymousUser
+from musicquiz.models import UserProfile, MusicCategory, Comment, QuizQuestion
 
 
 def index(request):
-    context_dict = {}
-    return render(request, 'musicquiz/index.html', context=context_dict)
+    return render(request, 'musicquiz/index.html')
 
 
 def about(request):
-    context_dict = {}
-    return render(request, 'musicquiz/about.html', context=context_dict)
+    return render(request, 'musicquiz/about.html')
 
 
 def categories(request):
@@ -25,9 +23,11 @@ def categories(request):
     return render(request, 'musicquiz/categories.html', context=context_dict)
 
 
+# View for rendering the category page (or parts of it)
 def show_category(request, category_slug):
     context_dict = {}
 
+    # If a POST request is made, it's an ajax call, render only the comments component
     if request.method == 'POST':
         category = MusicCategory.objects.get(slug=category_slug)
         user = User.objects.get(id=request.POST['user-id'])
@@ -38,6 +38,7 @@ def show_category(request, category_slug):
         comment.save()
         return render_comments(request, category_slug)
 
+    # If a request is not POST, render the whole page as it should be
     else:
         try:
             category = MusicCategory.objects.get(slug=category_slug)
@@ -54,11 +55,13 @@ def show_category(request, category_slug):
         return render(request, 'musicquiz/category.html', context=context_dict)
 
 
+# Removes the comment when triggered
 def remove_comment(request, category_slug, comment_id):
     Comment.objects.filter(id=comment_id).delete()
     return render_comments(request, category_slug)
 
 
+# Manages liking/disliking. Adds or removes users from the comment's likes ManyToMany field
 def toggle_like(request, category_slug, comment_id):
     comment = Comment.objects.get(id=comment_id)
     userprofile = User.objects.get(id=request.GET['user-id']).userprofile
@@ -70,8 +73,10 @@ def toggle_like(request, category_slug, comment_id):
     return render_comments(request, category_slug)
 
 
+# Helper function that renders the comments component, useful for AJAX calls
 def render_comments(request, category_slug):
     context_dict = {}
+    # Fetch the category based on the slug and its corresponding comments
     try:
         category = MusicCategory.objects.get(slug=category_slug)
         comments = Comment.objects.filter(category=category) \
@@ -87,8 +92,42 @@ def render_comments(request, category_slug):
 
 
 def quiz(request):
+    return render(request, 'musicquiz/quiz.html')
+
+
+def show_question(request, question_id):
     context_dict = {}
-    return render(request, 'musicquiz/quiz.html', context=context_dict)
+    try:
+        question = QuizQuestion.objects.get(question_id=int(question_id))
+        context_dict['question'] = question
+        context_dict['points'] = request.GET.get('points')
+    except QuizQuestion.DoesNotExist:
+        context_dict['question'] = None
+
+    return render(request, 'musicquiz/components/quiz-question.html', context=context_dict)
+
+
+def quiz_results(request, points):
+    points = int(points)
+    if points < 20:
+        category_slug = 'innocent-baby'
+    elif points < 27:
+        category_slug = 'the-awakening'
+    elif points < 35:
+        category_slug = 'the-child'
+    elif points < 35:
+        category_slug = 'the-faded-adult'
+    else:
+        category_slug = 'transcendence'
+
+    # If user is logged in, set his category
+    if request.user.is_authenticated:
+        category = MusicCategory.objects.get(slug=category_slug)
+        userprofile = UserProfile.objects.get(user=request.user)
+        userprofile.category = category
+        userprofile.save()
+
+    return redirect(reverse('musicquiz:category', args=[category_slug]))
 
 
 @login_required
@@ -138,5 +177,4 @@ def profile(request, username):
 
 
 def error(request):
-    context_dict = {}
-    return render(request, 'musicquiz/error.html', context=context_dict)
+    return render(request, 'musicquiz/error.html')
