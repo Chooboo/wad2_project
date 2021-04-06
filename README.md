@@ -1,11 +1,17 @@
-# How to set up the project:
+# How to run the project:
 Create a virtual environment first
 
-You can see what packages you need to install into your virtualenv in requirements.txt file.
+pip install -r requirements.txt
 
-Download the repo: git clone https://github.com/Chooboo/wad2_project.git
+git clone https://github.com/Chooboo/wad2_project.git
 
-Now you have git initialized in the folder you downloaded so you can just navigate into it and use all the git commands as usual.
+python manage.py makemigrations musicquiz
+
+python manage.py migrate
+                     
+python populate_wad.py - Do not skip this step, it's required for a working page
+
+python manage.py runserver
 
 
 
