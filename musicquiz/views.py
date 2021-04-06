@@ -109,11 +109,11 @@ def show_question(request, question_id):
 
 def quiz_results(request, points):
     points = int(points)
-    if points < 20:
+    if points < 17:
         category_slug = 'innocent-baby'
-    elif points < 27:
+    elif points < 23:
         category_slug = 'the-awakening'
-    elif points < 35:
+    elif points < 29:
         category_slug = 'the-child'
     elif points < 35:
         category_slug = 'the-faded-adult'

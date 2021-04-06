@@ -10,7 +10,7 @@ $(document).ready(function(){
 
         $("#add-comment").trigger("reset");
 
-        $.post('/category/' + categorySlug + '/',
+        $.post('/categories/' + categorySlug + '/',
             {'user-id' : userId,
             'body': commentBody,
             'csrfmiddlewaretoken': $("input[name=csrfmiddlewaretoken]").val()},
@@ -24,7 +24,7 @@ $(document).ready(function(){
         let commentId = $(this).attr('data-commentid');
         let categorySlug = $(this).attr('data-categoryslug')
 
-        $.get('/category/' + categorySlug + '/remove-comment/' + commentId + '/',
+        $.get('/categories/' + categorySlug + '/remove-comment/' + commentId + '/',
             function (data) {
                 $('#comments').html(data);
         })
@@ -35,7 +35,7 @@ $(document).ready(function(){
         let categorySlug = $(this).attr('data-categoryslug');
         let userId = $(this).attr('data-userid');
 
-        $.get('/category/' + categorySlug + '/toggle-like/' + commentId + '/',
+        $.get('/categories/' + categorySlug + '/toggle-like/' + commentId + '/',
             {'user-id': userId},
             function (data) {
                 $('#comments').html(data);
