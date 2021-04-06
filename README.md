@@ -1,14 +1,17 @@
 # How to run the project:
 Create a virtual environment first
 
-Install the required packages: pip install -r requirements.txt
+pip install -r requirements.txt
 
-Download the repo: git clone https://github.com/Chooboo/wad2_project.git
+git clone https://github.com/Chooboo/wad2_project.git
 
-Set up the database: python manage.py makemigrations musicquiz
-                     python manage.py migrate
+python manage.py makemigrations musicquiz
+
+python manage.py migrate
                      
-Populate the database to get a working page: python populate_wad.py
+python populate_wad.py - Do not skip this step, it's required for a working page
+
+python manage.py runserver
 
 
 
