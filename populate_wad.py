@@ -7,7 +7,7 @@ import django
 
 django.setup()
 
-from musicquiz.models import MusicCategory, UserProfile, Comment
+from musicquiz.models import MusicCategory, UserProfile, Comment, QuizQuestion
 from django.contrib.auth.models import User
 
 
@@ -53,6 +53,17 @@ def add_comment(category, author, body, liking_users):
     return comment
 
 
+def add_question(question_id, text, choice1, choice2, choice3, choice4):
+    question, created = QuizQuestion.objects.get_or_create(question_id=question_id)
+    if created:
+        question.question_text = text
+        question.choice_1 = choice1
+        question.choice_2 = choice2
+        question.choice_3 = choice3
+        question.choice_4 = choice4
+        question.save()
+
+
 def populate():
     baby_comments = [
         {'body': 'I hate you all, you ruined my life!'},
@@ -85,6 +96,24 @@ def populate():
             'image_name': 'adult.jpg'},
     }
 
+    questions = [
+        {'text': 'This is question number one.',
+         'choice1': 'Yes',
+         'choice2': 'No',
+         'choice3': 'Maybe',
+         'choice4': 'What'},
+        {'text': 'This is question number two.',
+         'choice1': 'Hello',
+         'choice2': 'World',
+         'choice3': 'For',
+         'choice4': 'Chrissake'},
+        {'text': 'This is question number one.',
+         'choice1': 'I',
+         'choice2': 'Need',
+         'choice3': 'More',
+         'choice4': 'Coffee'},
+    ]
+
     userprofiles = create_mock_users()
     for category, data in categories.items():
         cat = add_category(category, data['description'], data['image_name'])
@@ -92,6 +121,10 @@ def populate():
             for i, comment in enumerate(data['comments']):
                 print(comment['body'][:10])
                 c = add_comment(cat, userprofiles[i % 3], comment['body'], userprofiles)
+
+    for i, question in enumerate(questions):
+        add_question(i + 1, question['text'], question['choice1'], question['choice2'], question['choice3'],
+                     question['choice4'])
 
 
 if __name__ == "__main__":

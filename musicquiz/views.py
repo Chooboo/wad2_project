@@ -7,7 +7,7 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from musicquiz.models import UserProfile, MusicCategory, Comment
+from musicquiz.models import UserProfile, MusicCategory, Comment, QuizQuestion
 
 
 def index(request):
@@ -89,6 +89,32 @@ def render_comments(request, category_slug):
 def quiz(request):
     context_dict = {}
     return render(request, 'musicquiz/quiz.html', context=context_dict)
+
+
+def show_question(request, question_id):
+    context_dict = {}
+    try:
+        question = QuizQuestion.objects.get(question_id=int(question_id))
+        context_dict['question'] = question
+        context_dict['points'] = request.GET.get('points')
+    except QuizQuestion.DoesNotExist:
+        context_dict['question'] = None
+
+    return render(request, 'musicquiz/components/quiz-question.html', context=context_dict)
+
+
+def quiz_results(request, points):
+    points = int(points)
+    if points < 5:
+        category = 'innocent-baby'
+    elif points < 9:
+        category = 'the-awakening'
+    elif points < 13:
+        category = 'the-child'
+    else:
+        category = 'the-faded-adult'
+
+    return redirect(reverse('musicquiz:category', args=[category]))
 
 
 @login_required
