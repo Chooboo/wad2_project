@@ -77,6 +77,16 @@ html, body {
     padding: 0.25rem;
 }
 
+.category-container {
+    max-width: 50%;
+}
+
+@media (max-width: 768px) {
+    .category-container {
+        max-width: 100%;
+    }
+}
+
 .category-container:hover .cat-img {
     transform: scale(1.1);
     background-color: rgba(0, 0, 0, 0.2);
@@ -113,10 +123,17 @@ html, body {
 
 .heading-wrapper {
     background-color: #1b4000;
-    padding-top: 15px;
-    padding-bottom: 10px;
+    padding-top: 1.2rem;
+    padding-bottom: 1rem;
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
+}
+
+.content-body {
+    background-color: #303030;
+    padding-bottom:1rem;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
 }
 
 .main-content {
