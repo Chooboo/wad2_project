@@ -1,19 +1,19 @@
 # How to run the project:
 Create a virtual environment first
 
-git clone https://github.com/Chooboo/wad2_project.git
+`git clone https://github.com/Chooboo/wad2_project.git`
 
-cd wad2_project
+`cd wad2_project`
 
-pip install -r requirements.txt
+`pip install -r requirements.txt`
 
-python manage.py makemigrations musicquiz
+`python manage.py makemigrations musicquiz`
 
-python manage.py migrate
+`python manage.py migrate`
                      
-python populate_wad.py - Do not skip this step, it's required for a working page
+`python populate_wad.py` - Do not skip this step, it's required for a working website
 
-python manage.py runserver
+`python manage.py runserver`
 
 
 
@@ -22,7 +22,7 @@ source: https://medium.com/@jonathanmines/the-ultimate-github-collaboration-guid
 
 ## Before you start coding:
 
-git pull - makes sure you have the up-to-date code on your computer
+`git pull` - makes sure you have the up-to-date code on your computer
 
 
 ## During coding:
@@ -33,9 +33,9 @@ First create your own branch so that when you accidentally mess up it won't prop
 
 #### Examples:
 
-git checkout -b handle_registration
+`git checkout -b handle_registration`
 
-git checkout -b ...
+`git checkout -b ...`
 
 This will create a new branch AND switch you to it.
 
@@ -45,16 +45,16 @@ Try typing git branch to see whether you are on your branch or on main.
 
 You should be now use the usual commands:
 
-git add *
+`git add *`
 
-git commit -m "added a new feature"
+`git commit -m "added a new feature"`
 
 Don't use git push unless you have everything working on your side please.
 
 
 ## After you finish coding and everything's working:
 
-git push
+`git push`
 
 Now go to https://github.com/Chooboo/wad2_project. 
 You should see the branch you pushed up in a yellow bar at the top of the page with a button to “Compare & pull request”.
